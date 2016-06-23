@@ -54,10 +54,30 @@ print("Classifier accuracy percent:",(nltk.classify.accuracy(classifier, testing
 
 classifier.show_most_informative_features(15)
 
+'''
 save_classifier = open("naivebayes.pickle","wb")
 pickle.dump(classifier, save_classifier)
-save_classifier.close()
+save_classifier.close()'''
 
 classifier_f = open("naivebayes.pickle", "rb")
 classifier = pickle.load(classifier_f)
 classifier_f.close()
+
+text = "very good"
+text2= "Inspiring story. A bit hollywood'ish. Moves right along with good acting. Our entire family enjoyed it. "
+text3 = "This movie was awesome! The acting was great, plot was wonderful, and there were pythons...so yea!"
+text4 = "this is a very enjoyable movie. you will leave it feeling good, and maybe thinking a bit as well. think dolphin tale. wish they had the ski jump sceens in imax"
+
+print(classifier.classify(find_features(text)))
+print(classifier.classify(find_features(text2)))
+print(classifier.classify(find_features(text3)))
+print(classifier.classify(find_features(text4)))
+
+'''def sentiment(text):
+    feats = find_features(text)
+    return classifier.classify(feats)
+
+print(sentiment("very good"))
+print(sentiment("Inspiring story. A bit hollywood'ish. Moves right along with good acting. Our entire family enjoyed it. "))
+print(sentiment("This movie was awesome! The acting was great, plot was wonderful, and there were pythons...so yea!"))
+print(sentiment("this is a very enjoyable movie. you will leave it feeling good, and maybe thinking a bit as well. think dolphin tale. wish they had the ski jump sceens in imax"))'''

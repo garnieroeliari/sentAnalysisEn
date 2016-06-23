@@ -1,5 +1,5 @@
 # classify tweet 
-# use pickled model, featuresets, word features and documents saved from construct_classif.py
+# use pickled model, word features and documents saved from construct_classif.py
 
 import nltk
 import random
@@ -12,7 +12,7 @@ documents = pickle.load(documents_f)
 documents_f.close()
 
 
-word_features5k_f = open("pickled_algos/word_features3k.pickle", "rb")
+word_features5k_f = open("pickled_algos/word_features5k.pickle", "rb")
 word_features = pickle.load(word_features5k_f)
 word_features5k_f.close()
 
@@ -25,7 +25,7 @@ def find_features(document):
     return features
 
 
-featuresets_f = open("pickled_algos/featuresets3k.pickle", "rb")
+featuresets_f = open("pickled_algos/featuresets5k.pickle", "rb")
 featuresets = pickle.load(featuresets_f)
 featuresets_f.close()
 
@@ -36,7 +36,8 @@ testing_set = featuresets[1900:]
 training_set = featuresets[:1900]
 
 
-open_file = open("pickled_algos/naivebayes3k.pickle", "rb")
+#open_file = open("pickled_algos/naivebayes5k.pickle", "rb")
+open_file = open("pickled_algos/LinearSVC5k.pickle", "rb")
 classifier = pickle.load(open_file)
 open_file.close()
 
